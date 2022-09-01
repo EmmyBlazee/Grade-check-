@@ -1,0 +1,268 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+<style>
+    #smart{
+        display: none;
+        color: green;
+font-size: 40px;
+    }
+    #list{
+        text-align: center;
+        font-weight: bolder;
+        color: red;
+        font-size: 40px;
+    }
+    #print{
+        padding: 5%;
+        background-color: red;
+        color: white;
+        
+        display: none;
+    }
+    #loop{
+        padding: 2%;
+        background-color: red;
+        color: white;
+        display:flex;
+       
+
+    }
+    h1{
+        text-align: center;
+    }
+    input{
+        padding: 20px;
+        border-radius: 2px;
+        border: double 10px;
+        font-size: 15px;
+    }
+    #grade{
+        float: right;
+        border: solid 20px;
+    }
+    input{
+        margin-bottom: 20px;
+    }
+    #main{
+            position: relative;
+            background-color: black;
+            height: 50px;
+            width: 100%;
+            display: none;
+        }
+        #inner{
+            position: absolute;
+            background-color: green;
+            height: 100%;
+            width: 0%;
+            
+        }
+        #verb{
+            text-align: center;
+            color: white;
+            font-size: 20px;
+        }
+        #pri{
+            width: 80%;
+        }
+        @media print{
+            
+                button{
+                    display: none;
+                }
+            
+        }
+        #prints{
+            
+            display: none;
+            
+padding: 5%;
+        background-color: red;
+        color: white;
+        
+            
+            
+            
+            
+            
+        }
+</style>
+
+<body>
+    <div id="main">
+        <div id="inner"><p id="verb"></p></div>
+    </div>
+    <p id="list"> </p>
+    <div id="smart">
+        <div id="grade">
+            <p> Grade Board Meaning </p>
+            <p> Score: 1- 100</p>
+            <p> A - Execellent</p>
+            <p> B - Very Good</p>
+            <p> C - Good</p>
+            <p> D - Tried</p>
+            <p> E - Passed</p>
+            <p> F - Failed </p>
+        </div>
+        <div id="pri">
+        <h1>Grade Checker</h1>
+   
+<p id="demo"></p>
+<p id="fas"></p>
+<p id="fast"></p>
+</div>
+<button id="prints" onclick="window.print()">Print</button>
+<div id="no">
+<label>Name: <input type="text" id="name"></label><br />
+<label>Score: <input type="number" id="number" maxlength="3" pattern="[0-9]+"oninput="this.value=this.value.replace(/[0-9.]/g,'').replace(/(\./g, '$1')"></label>
+<button onclick="loop()" id="loop" > <p id="p">Check result</p></button><button id="print" onclick="clic()"> Print</button>
+
+</div>
+</div>
+
+
+<script>
+//   var h = "";
+//   for( var i = 0; i < 9; i++ ){
+//h += i  + "<br>" ;
+  //  }
+    //document.getElementById("fast").innerHTML= h +" "+ " "+ "your score is" ;
+    var pro= document.getElementById("inner");
+            var width=1;
+
+            var verb= document.getElementById("verb");
+           var main=document.getElementById("main");
+ 
+ 
+ 
+ 
+    function clic(){
+        
+    
+        var time= setInterval(function(){
+              if(width>= 100){
+                  clearInterval(time)
+                  verb.innerHTML= "Loading Completed"
+                  pri.style.fontSize="90%";
+        no.style.display="none";
+        grade.style.display="none";
+        pa.style.display="none";
+        pri.style.textAlign="center";
+        pri.style.display="block";
+        main.style.display="none"
+        pri.style.border="double 20px";
+        document.getElementById("prints").style.display="none";
+        window.print()
+              }
+              
+              else{
+                width++;
+              pro.style.width= width + "%"  ;
+              verb.innerHTML= width + "%";
+              main.style.display="block"
+              no.style.display="none";
+        grade.style.display="none";
+        pri.style.display="none";
+        pa.style.display="none";
+            }
+            },100);
+    }
+   var pa= document.getElementById("print");
+   var cli= document.getElementById("loop");
+   var  no= document.getElementById("no");
+   var grade= document.getElementById("grade");
+   cli.addEventListener("click", function(){
+       pa.style.display="inline-block";
+   });
+   var pri= document.getElementById("pri");
+  
+   
+  
+     function loop(){
+        var score= document.getElementById("number").value;
+        var name= document.getElementById("name").value;
+     
+      if(name==""){
+          document.getElementById("demo").innerHTML="Name was not inputed";
+      }
+      if(score==""){
+           document.getElementById("fas").innerHTML="Score was not inputed";
+      }
+      else{
+        document.getElementById("demo").innerHTML="Name :"+ " "+ name + "<br>"+ "Score :"+" "+ score ;
+       
+  
+
+    if(score <= 39){
+            text= "F" +" <br>"+ "Push Harded";
+            document.getElementById("fas").style.color= "red";
+            document.getElementById("demo").style.color= "red";
+        }
+        else if (score <=49){
+            text= "E"+" <br>"+ "On The Right Path";
+            document.getElementById("fas").style.color= "orange";
+            document.getElementById("demo").style.color= "orange";
+        }
+        else if( score <= 59){
+            text= " D" +"<br> "+ "Ok Performance";
+            document.getElementById("fas").style.color= "yellow";
+            document.getElementById("demo").style.color= "yellow";
+        }
+    else if( score <= 69){
+        text= "C"+"<br> "+ "Good Performance";
+        document.getElementById("fas").style.color= "black";
+            document.getElementById("demo").style.color= "black";
+    }
+    else if( score<= 79){
+        text= "B"+"<br>"+ "Wonderful Performance";
+        document.getElementById("fas").style.color= "lightgreen";
+            document.getElementById("demo").style.color= "lightgreen";
+    }
+    else if(score<= 100){
+        text="A" +" <br>"+ "Awesome Performance";
+        document.getElementById("fas").style.color= "green";
+            document.getElementById("demo").style.color= "green";
+    }
+    else{
+           text= "Invalid Input";
+        }
+        document.getElementById("fas").innerHTML="Grade :" +" "+ text;
+     }
+     
+    }
+
+    var loader = ".";
+
+    var set= setInterval(function()  {
+        y += "...";
+        
+    }, 10000);
+    for (var i = 0; i > 4; i++){
+
+    }
+     var x = 1;
+     var y ="";
+     var text = setInterval(function(){
+       
+         if(x >= 100){
+             clearInterval(text);
+             document.getElementById("list").style.display= "none";
+             document.getElementById("smart").style.display= "block";
+         }else{
+         x +=  9;
+         y += ".";
+         document.getElementById("list").innerHTML="Loading" + y +"<br>" + x + "%" ;
+         document.getElementById("smart").style.display= "none";
+         }
+     },100);
+   
+  //  var hn= setTimeout(function(){
+        
+    //    document.getElementById("smart").style.display= "block";
+  //  },100);
+</script>
+
+</body>
+</html>
